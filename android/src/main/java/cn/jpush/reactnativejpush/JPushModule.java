@@ -578,7 +578,7 @@ public class JPushModule extends ReactContextBaseJavaModule {
             String log = "action - onTagOperatorResult, sequence:" + jPushMessage.getSequence()
                     + ", tags: " + jPushMessage.getTags();
             Logger.i(TAG, log);
-            Logger.toast(context, log);
+//            Logger.toast(context, log);
             Logger.i(TAG,"tags size:"+jPushMessage.getTags().size());
             Callback callback = sCacheMap.get(jPushMessage.getSequence());
             if (null != callback) {
@@ -602,7 +602,7 @@ public class JPushModule extends ReactContextBaseJavaModule {
             String log = "action - onCheckTagOperatorResult, sequence:" + jPushMessage.getSequence()
                     + ", checktag: " + jPushMessage.getCheckTag();
             Logger.i(TAG, log);
-            Logger.toast(context, log);
+//            Logger.toast(context, log);
             Callback callback = sCacheMap.get(jPushMessage.getSequence());
             if (null != callback) {
                 WritableMap map = Arguments.createMap();
@@ -621,7 +621,7 @@ public class JPushModule extends ReactContextBaseJavaModule {
             String log = "action - onAliasOperatorResult, sequence:" + jPushMessage.getSequence()
                     + ", alias: " + jPushMessage.getAlias();
             Logger.i(TAG, log);
-            Logger.toast(context, log);
+//            Logger.toast(context, log);
             Callback callback = sCacheMap.get(jPushMessage.getSequence());
             if (null != callback) {
                 WritableMap map = Arguments.createMap();
