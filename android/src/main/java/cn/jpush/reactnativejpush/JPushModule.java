@@ -8,6 +8,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Callback;
@@ -46,7 +47,7 @@ public class JPushModule extends ReactContextBaseJavaModule {
     private Context mContext;
     private static String mEvent;
     private static Bundle mCachedBundle;
-    private static ReactApplicationContext mRAC;
+    public static ReactApplicationContext mRAC;
 
     private final static String RECEIVE_NOTIFICATION = "receiveNotification";
     private final static String RECEIVE_CUSTOM_MESSAGE = "receivePushMsg";
@@ -535,9 +536,11 @@ public class JPushModule extends ReactContextBaseJavaModule {
                         intent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     }
-                    intent.putExtras(mCachedBundle);
-                    context.startActivity(intent);
                     mEvent = OPEN_NOTIFICATION;
+                    intent.putExtras(mCachedBundle);
+                    intent.putExtra("mEvent",mEvent);
+                    context.startActivity(intent);
+
                     if (mRAC != null) {
                         sendEvent();
                     }
